@@ -15,7 +15,8 @@ async function init() {
 
   // Task A
   const taskA = findTopFiveWords(response.data)
-  console.log('\nPart 1: ', taskA);
+  console.log('\nPart 1:\n');
+  taskA.forEach((word, index) => console.log(`${index + 1}: ${word[0]} (${word[1]})`));
 
   // Task B
   const taskB = findDustin(response.data);
