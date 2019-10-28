@@ -1,3 +1,4 @@
+import { API_URL, DUSTIN } from './const';
 import { Helix, Episodes } from './models/helix';
 import { TvMaze, TvMazeEpisode } from './models/tvmaze';
 import { sanitizeText, getFirstSentence } from './util/util';
@@ -11,7 +12,7 @@ init();
  * Initializes the challenge
  */
 async function init() {
-  const response = await axios('http://api.tvmaze.com/singlesearch/shows?q=stranger-things&embed=episodes');
+  const response = await axios(API_URL);
 
   // Task A
   const taskA = findTopFiveWords(response.data)
@@ -24,7 +25,7 @@ async function init() {
 
   // Task C
   const taskC = formatResponse(response.data);
-  console.log('\nPart Three: ', JSON.stringify(taskC, null, 4));
+  console.log('\nPart Three: ', JSON.stringify(taskC, null, 2));
 }
 
 // Task A
@@ -67,7 +68,7 @@ function findDustin(response: TvMaze) {
   let episodeId;
 
   for (let episode of response._embedded.episodes) {
-    if (episode.summary.includes('Dustin')) {
+    if (episode.summary.toLowerCase().includes(DUSTIN)) {
       episodeId = episode.id;
 
       break;
