@@ -22,7 +22,7 @@ async function init() {
   console.log('\nPart Two: ', taskB);
 
   // Task C
-  const taskC: any = formatResponse(response.data);
+  const taskC = formatResponse(response.data);
   console.log('\nPart Three: ', JSON.stringify(taskC, null, 4));
 }
 
